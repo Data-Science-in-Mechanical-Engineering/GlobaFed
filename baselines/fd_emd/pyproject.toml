@@ -1,0 +1,20 @@
+[project]
+name = "fd-emd"
+version = "0.1.0"
+description = "FD-EMD federated optimization baseline"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "gymnasium[classic-control]>=1.0,<2",
+    "numpy>=2.1,<3",
+    "scipy>=1.15,<2",
+    "tqdm>=4.67,<5",
+    "wandb>=0.19,<0.20",
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

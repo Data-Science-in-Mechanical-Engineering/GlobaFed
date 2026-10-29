@@ -1,0 +1,10 @@
+_target_: fedbo.training.LocalTrainer.hydra_init
+train_cfg:
+  num_epochs: 100
+  batch_size: 64
+  optimizer:
+    _target_: optax.adamw
+    learning_rate: 1e-3
+    weight_decay: 0.0
+  loss_function:
+    _target_: fedbo.training.loss.MSELoss

@@ -1,0 +1,23 @@
+[project]
+name = "fedmany"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Max van Gemmeren"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas (>=2.3.1,<3.0.0)",
+    "pydoe (>=0.3.8,<0.4.0)",
+    "pydacefit (>=1.0.1,<2.0.0)",
+    "scikit-learn (>=1.7.1,<2.0.0)",
+    "matplotlib (>=3.10.5,<4.0.0)",
+    "wandb (>=0.21.1,<0.22.0)",
+    "gymnasium[classic-control] (>=1.2.0,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

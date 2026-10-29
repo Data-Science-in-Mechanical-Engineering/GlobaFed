@@ -1,0 +1,13 @@
+defaults:
+  - override launcher: basic
+  - _self_
+
+
+mode: MULTIRUN
+sweeper:
+  params:
+    trainer.num_rounds: 10,50,100
+    trainer.local_train_cfg.num_epochs: 10,50,100
+    trainer.local_train_cfg.optimizer.learning_rate: 1e-4, 1e-3
+    trainer.global_train_cfg.num_epochs: 10,50,100
+    trainer.global_train_cfg.optimizer.learning_rate: 1e-4, 1e-3

@@ -1,0 +1,45 @@
+defaults:
+  - agent: base
+  - dataset: ackley10d
+  - transformations: shift
+  - model: vbll
+  - trainer: local
+  - acquisition: thompson
+  - logger: wandb
+  - _self_
+
+_target_: fedbo.utils.hydra.MainConfig
+_convert_: all
+
+seed: 0
+num_agents: 10
+
+# Overrides
+bayesopt:
+  _target_: fedbo.optimization.BayesOpt.hydra_init
+  num_iterations: 50
+
+
+trainer:
+  train_cfg:
+    num_epochs: 6000
+    optimizer:
+      _target_: fedbo.models.vbll.vbll_optimizer
+      max_norm: 1.0
+      learning_rate: 1e-4
+    loss_function:
+      _target_: fedbo.training.loss.VBLLLoss
+
+
+model:
+  hidden_features: 64
+  num_hidden_layers: 4
+  reg_factor: 1.0
+  parameterization: "dense"
+  prior_scale: 10.0
+  wishart_scale: 0.01
+  dof: 1.0
+
+logger:
+  project: ${oc.env:WANDB_PROJECT,ackley10d}
+  name: Local-VBLL/#Agents-${num_agents}/S-${seed}

@@ -1,0 +1,4 @@
+_target_: fedbo.logger.WandBLogger
+entity: ${oc.env:WANDB_ENTITY,null}
+project: ${oc.env:WANDB_PROJECT,fedbo}
+mode: ${oc.env:WANDB_MODE,disabled}

@@ -1,0 +1,5 @@
+_target_: fedbo.models.MLP.hydra_init
+in_features: ${dataset.meta.input_dim}
+hidden_features: 64
+out_features: 1
+num_hidden_layers: 4

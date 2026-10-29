@@ -1,0 +1,3 @@
+_target_: fedbo.optimization.acquisition.FTSAcquisitionFunc
+seed: ${seed}
+input_dim: ${dataset.meta.input_dim}

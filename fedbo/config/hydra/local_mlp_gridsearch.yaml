@@ -1,0 +1,12 @@
+defaults:
+  - override launcher: basic
+  - _self_
+
+
+mode: MULTIRUN
+sweeper:
+  params:
+    seed: range(0,15)
+    # trainer.num_epochs: 10,100,500,1000,5000
+    trainer.train_cfg.optimizer.learning_rate: 1e-3,3e-3,5e-3,8e-3
+    # trainer.train_cfg.optimizer.learning_rate: 3e-2,3e-3,3e-4,3e-5

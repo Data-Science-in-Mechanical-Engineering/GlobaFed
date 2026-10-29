@@ -1,0 +1,28 @@
+_target_: fedbo.training.RayParallelFederatedTrainer.hydra_init
+num_rounds: 10
+
+train_cfg:
+  num_epochs: 10
+  batch_size: 64
+  optimizer:
+    _target_: optax.adamw
+    learning_rate: 1e-4
+    weight_decay: 0.0
+  loss_function:
+    _target_: fedbo.training.loss.VBLLLoss
+  
+train_head_cfg:
+  num_epochs: 10
+  batch_size: 64
+  optimizer:
+    _target_: optax.adamw
+    learning_rate: 1e-4
+    weight_decay: 0.0
+  loss_function:
+    _target_: fedbo.training.loss.VBLLLoss
+  
+aggregator_cfg:
+  optimizer:
+    _target_: optax.adamw
+    learning_rate: 8e-3
+    weight_decay: 0.0

@@ -1,0 +1,7 @@
+_target_: fedbo.data.CartpoleLQRDataset.hydra_init
+num_samples: 5
+
+meta:
+  bounds:
+    _target_: fedbo.data.objectives.CartpoleLQRObjective.bounds
+  input_dim: 5

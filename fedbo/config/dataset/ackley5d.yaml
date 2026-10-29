@@ -1,0 +1,10 @@
+_target_: fedbo.data.ObjectiveDataset.hydra_init
+objective_func: 
+  _target_: fedbo.data.objectives.AckleyObjective
+  input_dim: 5
+num_samples: ${dataset.objective_func.input_dim}
+
+meta:
+  bounds:
+    _target_: fedbo.data.objectives.AckleyObjective.bounds
+  input_dim: ${dataset.objective_func.input_dim}

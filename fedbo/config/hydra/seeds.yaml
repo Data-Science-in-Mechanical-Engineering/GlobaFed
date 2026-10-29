@@ -1,0 +1,9 @@
+defaults:
+  - override launcher: basic
+  - _self_
+
+
+mode: MULTIRUN
+sweeper:
+  params:
+    seed: range(0,30)

@@ -1,0 +1,13 @@
+_target_: fedbo.transformations.ObjectiveTransform.hydra_init
+x_transform_pre:
+  _target_: fedbo.transformations.RandomShifting.hydra_init
+  shift_bounds: [-0.3, 0.15]
+x_transform_post: 
+  _target_: fedbo.transformations.MinMaxScaling.hydra_init
+  dataset_bounds: ${dataset.meta.bounds}
+f_x_transform:
+  _target_: fedbo.transformations.RandomShifting.hydra_init
+  shift_bounds: [-3, 3]
+y_transform:
+  _target_: fedbo.transformations.GaussianNoise.hydra_init
+  scale: 0.05

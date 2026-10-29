@@ -1,0 +1,10 @@
+_target_: fedbo.models.VBLL.hydra_init
+in_features: ${dataset.meta.input_dim}
+hidden_features: 64
+out_features: 1
+num_hidden_layers: 4
+reg_factor: 1.0
+parameterization: "dense"
+prior_scale: 1.0
+wishart_scale: 0.1
+dof: 1.0

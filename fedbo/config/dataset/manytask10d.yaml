@@ -1,0 +1,6 @@
+_target_: fedbo.data.ManyTaskDataset.hydra_init
+input_dim: 10
+num_samples: 50
+
+meta:
+  input_dim: ${dataset.input_dim}

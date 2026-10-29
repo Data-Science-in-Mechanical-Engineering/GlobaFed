@@ -1,0 +1,7 @@
+_target_: fedbo.transformations.ObjectiveTransform.hydra_init
+x_transform_post: 
+  _target_: fedbo.transformations.MinMaxScaling.hydra_init
+  dataset_bounds: ${dataset.meta.bounds}
+y_transform:
+  _target_: fedbo.transformations.GaussianNoise.hydra_init
+  scale: 0.01

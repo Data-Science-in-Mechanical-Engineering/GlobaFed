@@ -1,0 +1,10 @@
+_target_: fedbo.data.ObjectiveDataset.hydra_init
+objective_func: 
+  _target_: fedbo.data.objectives.Hartmann6DObjective
+  input_dim: 6
+num_samples: ${dataset.objective_func.input_dim}
+
+meta:
+  bounds:
+    _target_: fedbo.data.objectives.Hartmann6DObjective.bounds
+  input_dim: ${dataset.objective_func.input_dim}

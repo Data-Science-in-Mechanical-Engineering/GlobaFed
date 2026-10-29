@@ -1,0 +1,43 @@
+defaults:
+  - agent: base
+  - dataset: ackley10d
+  - transformations: shift
+  - model: mlp
+  - trainer: centralized
+  - acquisition: thompson
+  - logger: wandb
+  - _self_
+
+_target_: fedbo.utils.hydra.MainConfig
+_convert_: all
+
+seed: 0
+num_agents: 10
+
+# Overrides
+bayesopt:
+  _target_: fedbo.optimization.BayesOpt.hydra_init
+  num_iterations: 50
+
+trainer:
+  num_rounds: 100
+  local_train_cfg:
+    num_epochs: 10
+    optimizer:
+      learning_rate: 1e-3
+  global_train_cfg:
+    num_epochs: 10
+    optimizer:
+      learning_rate: 1e-4
+  head_train_cfg:
+    num_epochs: 50
+    optimizer:
+      learning_rate: 1e-3
+
+model:
+  hidden_features: 64
+  num_hidden_layers: 4
+
+logger:
+  project: ${oc.env:WANDB_PROJECT,ackley10d}
+  name: C-MLP/#Agents-${num_agents}/S-${seed}

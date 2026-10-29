@@ -1,0 +1,45 @@
+defaults:
+  - agent: base
+  - dataset: ackley10d
+  - transformations: shift
+  - model: mlh_mlp
+  - trainer: federated
+  - acquisition: thompson
+  - logger: wandb
+  - _self_
+
+_target_: fedbo.utils.hydra.MainConfig
+_convert_: all
+
+seed: 0
+num_agents: 10
+
+# Overrides
+bayesopt:
+  _target_: fedbo.optimization.BayesOpt.hydra_init
+  num_iterations: 50
+  log_acquisition: false
+
+trainer:
+  num_rounds: 100
+  train_cfg:
+    num_epochs: 10
+    optimizer:
+      learning_rate: 1e-4
+  train_head_cfg:
+    num_epochs: 50
+    optimizer:
+      learning_rate: 1e-4
+  aggregator_cfg:
+    optimizer:
+      learning_rate: 8e-3
+
+model:
+  backbone_hidden_features: 64
+  head_hidden_features: 64
+  num_backbone_layers: 4
+  num_head_layers: 3
+
+logger:
+  project: ${oc.env:WANDB_PROJECT,ackley10d}
+  name: FL-MLH-MLP/#Agents-${num_agents}/S-${seed}

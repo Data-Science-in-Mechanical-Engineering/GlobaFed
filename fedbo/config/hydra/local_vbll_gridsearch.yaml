@@ -1,0 +1,16 @@
+defaults:
+  - override launcher: basic
+  - _self_
+
+
+mode: MULTIRUN
+sweeper:
+  params:
+    seed: range(0,3)
+    # trainer.train_cfg.optimizer.learning_rate: 1e-5, 1e-4, 1e-3
+    # trainer.aggregator_cfg.optimizer.learning_rate: 8e-4, 8e-3, 8e-2
+    model.reg_factor: 1.0, 10.0, 50.0
+    # model.parameterization: dense, diagonal
+    model.prior_scale: 0.1, 1.0, 10.0
+    model.wishart_scale: 0.01, 0.1, 1.0
+    model.dof: 1.0, 10.0, 25.0

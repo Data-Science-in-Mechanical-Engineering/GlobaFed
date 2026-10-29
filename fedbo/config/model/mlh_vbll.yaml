@@ -1,0 +1,12 @@
+_target_: fedbo.models.MultiLayerHeadVBLL.hydra_init
+in_features: ${dataset.meta.input_dim}
+backbone_hidden_features: 64
+head_hidden_features: 64
+out_features: 1
+num_backbone_layers: 3
+num_head_layers: 3
+reg_factor: 1.0
+parameterization: "dense"
+prior_scale: 1.0
+wishart_scale: 0.1
+dof: 1.0

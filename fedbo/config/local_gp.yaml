@@ -1,0 +1,27 @@
+defaults:
+  - agent: base
+  - dataset: ackley10d
+  - transformations: shift
+  - model: gp
+  - acquisition: thompson
+  - logger: wandb
+  - _self_
+
+_target_: fedbo.utils.hydra.MainConfig
+_convert_: all
+
+seed: 0
+num_agents: 10
+
+# Overrides
+bayesopt:
+  _target_: fedbo.optimization.BayesOpt.hydra_init
+  num_iterations: 50
+
+trainer:
+  _target_: fedbo.training.LocalTrainer.hydra_init
+  train_cfg: {}
+
+logger:
+  project: ${oc.env:WANDB_PROJECT,ackley10d}
+  name: Local-GP/#Agents-${num_agents}/S-${seed}
